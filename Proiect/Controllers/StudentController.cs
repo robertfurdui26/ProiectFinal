@@ -60,7 +60,7 @@ namespace Proiect.Controllers
             /// </summary>
             /// <param name="id"></param>
             /// <returns>student data</returns>
-            [HttpGet("/id/{id}")]
+            [HttpGet("/getSt/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(StudentGetDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest ,Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
@@ -86,7 +86,7 @@ namespace Proiect.Controllers
         /// </summary>
         /// <param name="studentToCreate">student to create data</param>
         /// <returns>create student data</returns>
-        [HttpPost]
+        [HttpPost("createStudent")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentCreateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
@@ -98,7 +98,7 @@ namespace Proiect.Controllers
         /// </summary>
         /// <param name="studentUpdate"></param>
         /// <returns></returns>
-        [HttpPatch]
+        [HttpPatch("update")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentUpdateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]

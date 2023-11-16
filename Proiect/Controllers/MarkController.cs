@@ -34,8 +34,8 @@ namespace Proiect.Controllers
         /// Get All Marks for a student
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentUpdateDto))]
+        [HttpGet("getAllMarks")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         public List<Mark> GetAllMarks() => dal.GetAllNotes();

@@ -22,8 +22,18 @@ namespace Proiect.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        [HttpPost("addCourseStudent")]
-        public void AddCourseStudent([FromBody] string courseName) => dal.AddCourse(courseName);
+        [HttpPost("addCurs")]
+        public IActionResult AddCourseStudent([FromBody] string courseName)
+        {
+            try
+            {
+                var course = dal.AddCourse(courseName);
+                return Ok(course);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         /// <summary>
         /// Get All Courses
