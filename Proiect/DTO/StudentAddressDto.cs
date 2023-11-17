@@ -1,6 +1,6 @@
 ﻿namespace Proiect.Dtos
 {
-    public class GetStudentAddressDto
+    public class StudentAddressDto
     {
         public int Id { get; set; }
         public int Number { get; set; }

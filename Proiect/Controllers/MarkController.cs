@@ -20,9 +20,9 @@ namespace Proiect.Controllers
 
         }
         /// <summary>
-        /// Add Marks for a student
+        /// Create Mark for Student
         /// </summary>
-        /// <param name="createNota"></param>
+        /// <param name="mark"></param>
         [HttpPost("addMarkForAStudent")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarkToCreateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -33,7 +33,7 @@ namespace Proiect.Controllers
         /// <summary>
         /// Get All Marks for a student
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of all marks from db</returns>
         [HttpGet("getAllMarks")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -43,8 +43,8 @@ namespace Proiect.Controllers
         /// <summary>
         /// Get Average Per Subject
         /// </summary>
-        /// <param name="studentIdAverage"></param>
-        /// <returns></returns>
+        /// <param name="studentIdAverage">studentId</param>
+        /// <returns>Return student average per one subject</returns>
         [HttpGet("averagePerSubject")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarksAverageDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -55,7 +55,6 @@ namespace Proiect.Controllers
 
             if (averageList != null && averageList.Any())
             {
-                // Calculate the average only once for the entire list
                 var average = averageList.First().AverageTotal;
 
                 var averageDtoList = new List<MarksAverageDto>

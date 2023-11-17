@@ -22,7 +22,7 @@ namespace Proiect.Controllers
         /// <summary>
         /// Get All Students
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of all students from database</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentGetDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -34,9 +34,9 @@ namespace Proiect.Controllers
         }
 
         /// <summary>
-        /// Order StudentList By Average
+        /// Ordered Students List By Average
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of students ordered by average grades</returns>
         [HttpGet("averageListOrdered")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderStudentDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -56,10 +56,10 @@ namespace Proiect.Controllers
         }
 
             /// <summary>
-            /// GetStudentById
+            /// Get Student By Id
             /// </summary>
-            /// <param name="id"></param>
-            /// <returns>student data</returns>
+            /// <param name="id">Student Id</param>
+            /// <returns>Return a student by his id from database</returns>
             [HttpGet("/getSt/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(StudentGetDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest ,Type = typeof(string))]
@@ -69,23 +69,23 @@ namespace Proiect.Controllers
             dal.GetStudentById(id).ToDto();
 
         /// <summary>
-        /// GetStudentAddress
+        /// Get Studen tAddress
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Student Id</param>
+        /// <returns>Return student address from database</returns>
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetStudentAddressDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentAddressDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        public GetStudentAddressDto GetStudentAddress(int id ) =>
+        public StudentAddressDto GetStudentAddress(int id ) =>
             dal.GetStudentAddress(id).ToDto();
 
         /// <summary>
-        /// CreateStudent
+        /// Create Student
         /// </summary>
-        /// <param name="studentToCreate">student to create data</param>
-        /// <returns>create student data</returns>
+        /// <param name="studentToCreate">studentToCreate</param>
+        /// <returns>Create a student data</returns>
         [HttpPost("createStudent")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentCreateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -96,8 +96,8 @@ namespace Proiect.Controllers
         /// <summary>
         /// Update student
         /// </summary>
-        /// <param name="studentUpdate"></param>
-        /// <returns></returns>
+        /// <param name="studentUpdate">studentToUpdate</param>
+        /// <returns>Return a new student updated</returns>
         [HttpPatch("update")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentUpdateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -108,10 +108,10 @@ namespace Proiect.Controllers
     
 
         /// <summary>
-        ///DeleteStudent
+        ///Delete Student
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">StudentId</param>
+        /// <returns>Delete a student from database</returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]

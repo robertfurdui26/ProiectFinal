@@ -1,54 +1,36 @@
 ﻿using Data.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Proiect.Dto;
 using Proiect.Dtos;
-using System.Runtime.CompilerServices;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Proiect.Utils
 {
     public static class StudentUtils
     {
-        public static StudentGetDto ToDto(this Student student)
-        {
-            if(student == null)
-            {
-                return null;
-            }
+        public static StudentGetDto ToDto(this Student student) =>
+            student is null
+            ? throw new Exception($"Student not found {student}")
+            : new StudentGetDto { Id = student.Id, Name = student.Name, Age = student.Age };
 
-            return new StudentGetDto { Id = student.Id, Name = student.Name, Age = student.Age };
+        public static StudentAddressDto ToDto(this Address studentAddress) =>
+            studentAddress is null
+            ? throw new Exception($"Address not found {studentAddress}")
+            :  new StudentAddressDto { Id = studentAddress.Id , City = studentAddress.City , Number = studentAddress.Number , Street = studentAddress.Street};
 
-        }
-
-
-      
-
-        public static GetStudentAddressDto ToDto(this Address studentAddress)
-        {
-            if (studentAddress == null)
-            {
-                return null;
-            }
-            return new GetStudentAddressDto { Id = studentAddress.Id, City = studentAddress.City, Number = studentAddress.Number, Street = studentAddress.Street };
-        }
-
-        public static Student ToEntity(this StudentCreateDto student)
-        {
-            if(student == null)
-            {
-                return null;
-            }
-            return new Student
+        public static Student ToEntity(this StudentCreateDto student) =>
+            student is null
+            ? throw new Exception($"Student not found {student}")
+            : new Student
             {
                 Name = student.Name,
                 Age = student.Age,
             };
-        }
 
         public static Student ToEntity(this StudentUpdateDto student)
         {
             if (student == null)
             {
-                return null;
+                throw new Exception($"Student cannot found! {student}");
             }
             return new Student
             {
@@ -60,8 +42,9 @@ namespace Proiect.Utils
 
         public static Address ToEntity(this AddressTuUpdateDto addressTuUpdate)
         {
-            if(addressTuUpdate == null){
-                return null;
+            if(addressTuUpdate == null)
+            {
+                throw new Exception($"Address not found {addressTuUpdate}");
             }
 
             return new Address

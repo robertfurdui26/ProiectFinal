@@ -7,18 +7,19 @@ namespace Proiect.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CursController : ControllerBase
+    public class CourseController : ControllerBase
     {
         private readonly IDataAccessLayerService dal;
-        public CursController(IDataAccessLayerService dal)
+        public CourseController(IDataAccessLayerService dal)
         {
             this.dal = dal;
         }
 
         /// <summary>
-        /// Add Course 
+        /// Add Course
         /// </summary>
-        /// 
+        /// <param name="courseName">courseName</param>
+        /// <returns>We create a course and store in database</returns>
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
@@ -36,8 +37,9 @@ namespace Proiect.Controllers
         }
 
         /// <summary>
-        /// Get All Courses
+        /// Get All Corses
         /// </summary>
+        /// <returns>A list of all courses we have in database</returns>
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]

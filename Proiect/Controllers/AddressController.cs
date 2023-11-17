@@ -18,7 +18,7 @@ namespace Proiect.Controllers
         /// <summary>
         /// Update Or Create Address
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Student Id</param>
         /// <param name="updateAddress"></param>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -17,7 +17,7 @@ namespace Data
 
             if (!ctx.Coursess.Any(c => c.Id == courseId))
             {
-                throw new InvalidIdException($"Id Curs invalid {courseId}");
+                throw new InvalidIdException($"Id Course invalid {courseId}");
             }
 
             ctx.Marks.Add(new Mark
@@ -55,12 +55,12 @@ namespace Data
                 }
                 else
                 {
-                    return null;
+                    throw new Exception("Student doesn't exist!");
                 }
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine($"Eroare la obținerea mediei: {ex.Message}");
+                Console.Error.WriteLine($"Error trying get the average: {ex.Message}");
                 throw;
             }
         }

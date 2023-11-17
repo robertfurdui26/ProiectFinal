@@ -34,7 +34,7 @@ namespace Data
             }
             catch(Exception ex)
             {
-                Console.Error.WriteLine($"Eroare la obținerea studentului: {ex.Message}");
+                Console.Error.WriteLine($"Error trying get student: {ex.Message}");
                 throw;
             }
         }    
@@ -45,7 +45,7 @@ namespace Data
             {
                 return student.Address;
             }
-            return null;
+            throw new Exception("Address doesn't exist!");
 
         }
         public Student CreateStudent(Student student)
@@ -53,7 +53,7 @@ namespace Data
 
             if (ctx.Students.Any(s => s.Id == student.Id))
             {
-                //throw exception
+                throw new Exception($"Student already exist{student}");
             }
 
             ctx.Students.Add(student);
@@ -68,7 +68,7 @@ namespace Data
             var student = ctx.Students.FirstOrDefault(s => s.Id == studentToUpdate.Id);
             if (student == null)
             {
-                return null;
+                throw new Exception("Student doesn't exist!");
             }
 
             student.Name = studentToUpdate.Name;
@@ -85,7 +85,7 @@ namespace Data
             var student = ctx.Students.Include(s => s.Address).FirstOrDefault(s => s.Id == studentId);
             if (student == null)
             {
-                //exception
+                throw new Exception($"StudentId doesn't exist {studentId}!");
             }
 
             var created = false;
@@ -109,7 +109,7 @@ namespace Data
 
             if (student == null)
             {
-                throw new InvalidIdException($"student not found{studentId}");
+                throw new InvalidIdException($"Student not found{studentId}");
             }
 
             ctx.Students.Remove(student);
