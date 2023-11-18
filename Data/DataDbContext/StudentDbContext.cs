@@ -6,8 +6,6 @@ namespace Data.Models
 {
     public class StudentDbContext : DbContext, IStudentDbContext
     {
-
-
         public DbSet<Student> Students { get; set; }
         public DbSet<Address> Addresses { get; set; }
 

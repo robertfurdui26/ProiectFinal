@@ -23,7 +23,7 @@ namespace Data.Models
                 return Marks.Average(n => n.Grade);
             }
 
-            return 0; // sau altă valoare implicită în cazul în care nu există note
+            return 0; 
         }
         public Address Address { get; set; }
 
