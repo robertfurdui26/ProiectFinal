@@ -27,13 +27,13 @@ namespace Proiect.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarkToCreateDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        public void AddNotaForStudent([FromBody] MarkToCreateDto mark) =>
+        public void AddMarkForStudent([FromBody] MarkToCreateDto mark) =>
             dal.AddMark(mark.Grade, mark.CourseId , mark.StudentId);
 
         /// <summary>
         /// Get All Marks for a student
         /// </summary>
-        /// <returns>A list of all marks from db</returns>
+        /// <returns>A list of  marks for a student from db for all courses that he have</returns>
         [HttpGet("getAllMarks")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -44,6 +44,7 @@ namespace Proiect.Controllers
         /// Get Average Per Subject
         /// </summary>
         /// <param name="studentIdAverage">studentId</param>
+        /// <param name="studentIdAverage">courseId</param>
         /// <returns>Return student average per one subject</returns>
         [HttpGet("averagePerSubject")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MarksAverageDto))]

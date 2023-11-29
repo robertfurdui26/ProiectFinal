@@ -43,7 +43,7 @@ namespace Proiect.Controllers
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        [HttpGet("getAllCoursesSTudent")]
-        public List<Course> GetAllMark() => dal.GetAllCursuri();
+        [HttpGet("getAllCoursesStudent")]
+        public List<Course> GetAllCourses() => dal.GetAllCursuri();
     }
 }

@@ -13,15 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(connString));
 
 builder.Services.AddScoped<IDataAccessLayerService, DataAccessLayerService>();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactOrigin", builder =>
-    {
-        builder.WithOrigins("http://localhost:3000") 
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-});
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,7 +29,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowReactOrigin");
 
 app.UseAuthorization();
 
